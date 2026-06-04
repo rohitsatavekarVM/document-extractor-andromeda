@@ -1,0 +1,5 @@
+pydantic
+pymupdf
+litellm
+python-dotenv
+git+https://github.com/AI-Emerging-Tech/ET-Agentify.git
