@@ -1,4 +1,4 @@
-from dotenv import load_dotenv
+
 
 from app.workflow.extractor_workflow import (
     build_workflow
@@ -7,22 +7,20 @@ from app.workflow.extractor_workflow import (
 
 def main():
 
-    load_dotenv()
+    
 
     workflow = build_workflow()
 
     result = workflow.execute(
         state={
             "file_path":
-                "documents/invoice.pdf"
+                "documents/invoice.pdf",
         }
     )
+    print("=" * 50 )
 
-    print("\n")
-    print("=" * 50)
-    print("EXTRACTED DATA")
-    print("=" * 50)
-    print("\n")
+    print("EXTRACTED DATA : ")
+    
 
     print(
         result["extracted_data"]

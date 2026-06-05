@@ -4,45 +4,37 @@ from app.workflow.state import (
     ExtractionState
 )
 
-from app.nodes.read_document import (
-    read_document
+from app.nodes.read_pdf import (
+    read_pdf
 )
 
-from app.nodes.build_prompt import (
-    build_prompt
+from app.nodes.extract_invoice import (
+    extract_invoice
 )
 
-from app.nodes.call_llm import (
-    call_llm
-)
-
-from app.nodes.validate import (
-    validate
+from app.nodes.validate_output import (
+    validate_output
 )
 
 
 def build_workflow():
 
     workflow = WorkflowBuilder(
-        name="InvoiceExtractionWorkflow",
+        name="InvoiceExtractor",
         state_schema=ExtractionState
     )
 
     (
         workflow
 
-        .start("read_document")
-        .run(read_document)
+        .start("read_pdf")
+        .run(read_pdf)
 
-        .then("build_prompt")
-        .run(build_prompt)
+        .then("extract_invoice")
+        .run(extract_invoice)
 
-        .then("call_llm")
-        .run(call_llm)
-
-        .finish("validate")
-        .run(validate)
-
+        .finish("validate_output")
+        .run(validate_output)
     )
 
     return workflow

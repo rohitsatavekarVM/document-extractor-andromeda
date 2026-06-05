@@ -1,4 +1,7 @@
 from typing import TypedDict
+from typing import Type
+
+from pydantic import BaseModel
 
 
 class ExtractionState(TypedDict, total=False):
@@ -7,10 +10,8 @@ class ExtractionState(TypedDict, total=False):
 
     document_text: str
 
-    prompt: str
+    llm_response: str
 
-    llm_output: str
+    schema: Type[BaseModel]
 
     extracted_data: dict
-
-    validation_error: str
