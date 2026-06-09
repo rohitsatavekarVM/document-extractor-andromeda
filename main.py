@@ -1,5 +1,4 @@
 
-
 from app.workflow.extractor_workflow import (
     build_workflow
 )
